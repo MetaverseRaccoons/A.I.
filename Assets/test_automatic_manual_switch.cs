@@ -36,6 +36,8 @@ public class GearShiftModeSelector : VehicleBehaviour
                 {
                 // Force select mode M (0)
                 vehicle.data.Set(Channel.Input, InputData.AutomaticGear, 0);
+                Debug.Log("git_problems")
+
                 }
             }
         else
