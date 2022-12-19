@@ -18,15 +18,15 @@ public class MovableObject : MonoBehaviour
 	public float position = 0.0f;
 	public float max = 0.25f;
 	public float min = -0.25f;
-	public Vector3 direction = Vector3.up;
+	public Vector3 direction = Vector3.down;
 
 	public float rate = 0.2f;
 	public AutoMovement autoMode = AutoMovement.None;
 	public float autoAmplitude = 0.2f;
 	public float autoFrequency = 1.0f;
 
-	public KeyCode keyIncrement = KeyCode.KeypadPlus;
-	public KeyCode keyDecrement = KeyCode.KeypadMinus;
+	public KeyCode keyIncrement = KeyCode.UpArrow;
+	public KeyCode keyDecrement = KeyCode.DownArrow;
 
 
 	private Rigidbody m_rb;
@@ -50,6 +50,7 @@ public class MovableObject : MonoBehaviour
 
 	void FixedUpdate ()
 		{
+		Debug.Log("I am fucked");
 		if (Input.GetKey(keyIncrement)) position += rate * Time.deltaTime;
 		if (Input.GetKey(keyDecrement)) position -= rate * Time.deltaTime;
 
@@ -74,7 +75,7 @@ public class MovableObject : MonoBehaviour
 
 		position = Mathf.Clamp(position, min, max);
 		Vector3 newPos = m_basePos + direction * (position + m_offset);
-
+		Debug.Log("I am fucked 2");
 		if (m_rb)
 			m_rb.MovePosition(newPos);
 		else
