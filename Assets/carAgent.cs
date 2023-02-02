@@ -12,34 +12,34 @@ public class carAgent : Agent
     // Start is called before the first frame update
     void Start()
     {
-        rBody = GetComponent<Rigidbody>(); //return a reference to the rigid boddy of the car
+        //rBody = GetComponent<Rigidbody>(); //return a reference to the rigid boddy of the car
     }
-    public ActionBuffers vectorAction;
+    //public ActionBuffers vectorAction;
 
-    public Transform target; //change x, y, z coordinate
-    public Camera temp; 
-    public override void OnEpisodeBegin()
-    {
+    //public Transform target; //change x, y, z coordinate
+    //public Camera temp; 
+   // public override void OnEpisodeBegin()
+  //  {
         // Reset agent
-        this.rBody.angularVelocity = Vector3.zero;
-        this.rBody.velocity = Vector3.zero;
-        this.transform.localPosition = new Vector3(-9, 0.5f, 0);
+        //this.rBody.angularVelocity = Vector3.zero;
+       // this.rBody.velocity = Vector3.zero;
+        //this.transform.localPosition = new Vector3(-9, 0.5f, 0);
 
         // Move target to a new spot
-        target.localPosition = new Vector3(12 + Random.value * 8, Random.value * 3, Random.value * 10 - 5);
-    }
+       // target.localPosition = new Vector3(12 + Random.value * 8, Random.value * 3, Random.value * 10 - 5);
+  //  }
 
     //observations = the positions of the agent
     public override void CollectObservations(VectorSensor sensor)
     {
         // Target and Agent positions & Agent velocity
-        sensor.AddObservation(target.localPosition);
-        sensor.AddObservation(this.transform.localPosition);
-        sensor.AddObservation(rBody.velocity);
+        //sensor.AddObservation(target.localPosition);
+        //sensor.AddObservation(this.transform.localPosition);
+        //sensor.AddObservation(rBody.velocity);
     }
 
 
-    public float speed = 20;
+    //public float speed = 20;
     //public override void OnActionReceived(ActionBuffers vectorAction)
     //{
     //    Vector3 controlSignal = Vector3.zero;

@@ -11,6 +11,7 @@ public class box_in_camera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         renderer2 = GetComponent<MeshRenderer>();
         collider2 = GetComponent<Collider>();
         var bounds = collider2.bounds;
@@ -29,7 +30,7 @@ public class box_in_camera : MonoBehaviour
 
     void Update()
     {
-       
+
         var bounds = GetComponent<Collider>().bounds;
         cameraFrustum = GeometryUtility.CalculateFrustumPlanes(temp); //returns the planes for the camera --> place it in update if your camera moves
         if (GeometryUtility.TestPlanesAABB(cameraFrustum, bounds))
