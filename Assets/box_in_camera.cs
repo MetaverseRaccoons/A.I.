@@ -4,13 +4,34 @@ using UnityEngine;
 
 public class box_in_camera : MonoBehaviour
 {
-    public Camera temp;
+    Camera temp;
     MeshRenderer renderer2;
     Plane[] cameraFrustum; //series of camera planes
     Collider collider2;
     // Start is called before the first frame update
     void Start()
     {
+        foreach(Camera c in Camera.allCameras){
+            Debug.Log("uit");
+
+            Debug.Log(c.gameObject.name);
+            if ( "test_camera" == c.gameObject.name)
+            {
+                Debug.Log("in");
+
+                Debug.Log(c.gameObject.name);
+
+                temp = c;
+            }
+            else
+            {
+                Debug.Log("Oops");
+            }
+
+
+
+        }
+        
 
         renderer2 = GetComponent<MeshRenderer>();
         collider2 = GetComponent<Collider>();
