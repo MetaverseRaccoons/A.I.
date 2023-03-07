@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class box_in_camera : MonoBehaviour
 {
-    Camera temp;
+    public Camera temp;
     MeshRenderer renderer2;
     Plane[] cameraFrustum; //series of camera planes
     Collider collider2;

@@ -16,11 +16,11 @@ public class cross_line : MonoBehaviour
     void Update()
     {
 
-        Debug.Log(toTexture2D(test).GetPixel(0,0));
+        //Debug.Log(toTexture2D(test).GetPixel(0,0));
         Color temp =  toTexture2D(test).GetPixel(0, 0);
         if (temp.r > 0.3 && temp.b <0.2 && temp.g<0.2 )
         {
-            Debug.Log("on red plane");
+            //Debug.Log("on red plane");
         }
         // Do processing of data here.
     }
