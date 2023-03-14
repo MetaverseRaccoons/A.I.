@@ -7,9 +7,6 @@ public class cross_line : MonoBehaviour
 
     void Start()
     {
-        // Start web cam feed
-        Debug.Log("does something");
-
 
     }
 
@@ -35,4 +32,7 @@ public class cross_line : MonoBehaviour
         tex.Apply();
         return tex;
     }
+
+
+
 }

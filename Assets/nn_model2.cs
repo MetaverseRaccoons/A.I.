@@ -1,7 +1,8 @@
 using UnityEngine;
 using Unity.Barracuda;
+using UnityEngine.UI;
 
-public class nn_model2: MonoBehaviour
+public class nn_model2 : MonoBehaviour
 {
     // The camera to capture the image from
     public Camera camera;
@@ -27,9 +28,20 @@ public class nn_model2: MonoBehaviour
     // The worker for running inference
     private IWorker worker;
 
+    public Text m_MyText;
+
+    private string[] names;
+    private string new_Text;
+
     private void Start()
     {
         worker = modelAsset.CreateWorker();
+        names = new string[]{ "Speed limit (20km/h)", "Speed limit (30km/h)", "Speed limit (50km/h)", "Speed limit (60km/h)", "Speed limit (70km/h)", "Speed limit (80km/h)", "End of speed limit (80km/h)",
+        "Speed limit (100km/h)", "Speed limit (120km/h)", "No passing", "No passing for vehicles over 3.5 metric tons", "Right-of-way at the next intersection", "Priority road", "Yield", "Stop",
+        "No vehicles", "Vehicles over 3.5 metric tons prohibited", "No entry", "General caution", "Dangerous curve to the left", "Dangerous curve to the right", "Double curve", "Bumpy road", "Slippery road",
+        "Road narrows on the right", "Road work", "Traffic signals", "Pedestrians", "Children crossing", "Bicycles crossing", "Beware of ice/snow", "Wild animals crossing", "End of all speed and passing limits",
+        "Turn right ahead", "Turn left ahead", "Ahead only", "Go straight or right", "Go straight or left", "Keep right", "Keep left", "Roundabout mandatory", "End of no passing", "End of no passing by vehicles over 3.5 metric tons"};
+
 
         // Load the neural network model from the asset
         //model = ModelLoader.Load(modelAsset);
@@ -39,12 +51,12 @@ public class nn_model2: MonoBehaviour
 
         // Compute the output tensor shape
         //outputShape = new TensorShape(1, 1, model.outputs[outputName].shape[1], model.outputs[outputName].shape[0]);
-        int index = 14;
-        UnityEngine.Debug.Log($"Image was recognised as class number: " + index);
+
+
 
     }
 
-    private void Update()
+    public string Update()
     {
         // Capture the camera image
         var cameraTexture = RenderTexture.GetTemporary(camera.pixelWidth, camera.pixelHeight, 0);
@@ -85,16 +97,25 @@ public class nn_model2: MonoBehaviour
         //UnityEngine.Debug.Log($"Image was recognised as class number: " + output[0] + " " + output[1]);
         //UnityEngine.Debug.Log($"Image was recognised as class number: " + max)
 		UnityEngine.Debug.Log($"Image was recognised as class number: " + index);
+        m_MyText.text = "This is my text";
 
-        float temp = max - max1;
+        if (max - max1 > 1)
+        {
+            m_MyText.text = "You missed a roadsign " + names[index];
+            Debug.Log(names[index]);
+        }
+        else
+            m_MyText.text = "";
+
         //UnityEngine.Debug.Log($"margin: " + temp);
-    
 
 
-        // Clean up
+
+            // Clean up
         inputTensor.Dispose();
         output.Dispose();
         RenderTexture.ReleaseTemporary(cameraTexture);
+        return "You missed a roadsign " + names[index];
     }
 
     private void OnDestroy()
