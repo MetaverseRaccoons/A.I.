@@ -10,16 +10,21 @@ public class cross_line : MonoBehaviour
 
     }
 
-    void Update()
+    public string Update()
     {
 
         //Debug.Log(toTexture2D(test).GetPixel(0,0));
         Color temp =  toTexture2D(test).GetPixel(0, 0);
-        if (temp.r > 0.3 && temp.b <0.2 && temp.g<0.2 )
+        if (temp.r > 0.5 && temp.b >0.5 && temp.g>0.5 )
         {
-            //Debug.Log("on red plane");
+            Debug.Log("on white plane");
+            return "Please stay in your lane.";
         }
-        // Do processing of data here.
+        else
+            Debug.Log("Not on white plane");
+        return "";
+
+
     }
 
 

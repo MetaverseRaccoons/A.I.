@@ -2,7 +2,7 @@ using UnityEngine;
 using Unity.Barracuda;
 using UnityEngine.UI;
 
-public class nn_model2 : MonoBehaviour
+public class version2 : MonoBehaviour
 {
     // The camera to capture the image from
     public Camera camera;
@@ -38,7 +38,7 @@ public class nn_model2 : MonoBehaviour
     private int check;
     private bool send;
 
-    
+
     private void Start()
     {
         worker = modelAsset.CreateWorker();
@@ -104,13 +104,13 @@ public class nn_model2 : MonoBehaviour
 
         //UnityEngine.Debug.Log($"Image was recognised as class number: " + output[0] + " " + output[1]);
         //UnityEngine.Debug.Log($"Image was recognised as class number: " + max)
-		//UnityEngine.Debug.Log($"Image was recognised as class number: " + index);
+        //UnityEngine.Debug.Log($"Image was recognised as class number: " + index);
         m_MyText.text = "This is my text";
 
         if (index == prev)
-            { check++; }
+        { check++; }
         else
-            { check = 0; }
+        { check = 0; }
 
         if (max - max1 > 1 && max > 4.5)
         {
@@ -120,7 +120,8 @@ public class nn_model2 : MonoBehaviour
             send = true;
         }
         else
-            { m_MyText.text = "";
+        {
+            m_MyText.text = "";
             prev = -1;
             send = false;
         }
@@ -129,7 +130,7 @@ public class nn_model2 : MonoBehaviour
 
 
 
-            // Clean up
+        // Clean up
         inputTensor.Dispose();
         output.Dispose();
         RenderTexture.ReleaseTemporary(cameraTexture);
